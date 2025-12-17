@@ -1,7 +1,8 @@
 import user from '../assets/images/avatar.png'
-export default function ContactCard({contacts}){
+export default function ContactCard({contacts,clickHandler}){
+
     const {id,name,email}=contacts
-    console.log("hi",name);
+    console.log("hi",clickHandler);
     
     return(
         <div className="cardItem" >
@@ -13,7 +14,7 @@ export default function ContactCard({contacts}){
                     <div>{email}</div>
                 </div>
                 </div>
-                <i className="trash alternate outline icon right floated"></i>
+                <i className="trash alternate outline icon right floated" onClick={()=>clickHandler(id)}></i>
             </div>
     )
 }

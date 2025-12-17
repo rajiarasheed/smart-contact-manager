@@ -1,18 +1,18 @@
 import ContactCard from "./ContactCard";
 
-export default function ContactList({contacts}){
-    console.log(contacts);
-    const renderedContactList= contacts.map((contact)=>{
-        return(
-            <ContactCard contacts={contact}/>
-        )
-    }
-    )
-    console.log(renderedContactList);
-    
-    return(
-        <div className="ui celled list">
-        {renderedContactList}
-        </div>
-    )
+export default function ContactList({ contacts, getContactId }) {
+  console.log(getContactId);
+
+  const renderedContactList = contacts.map((contact) => {
+    return (
+      <ContactCard
+        key={contact.id}
+        contacts={contact}
+        clickHandler={getContactId}
+      />
+    );
+  });
+  console.log(renderedContactList);
+
+  return <div className="ui celled list">{renderedContactList}</div>;
 }
