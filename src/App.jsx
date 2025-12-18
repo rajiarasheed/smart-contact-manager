@@ -7,6 +7,7 @@ import { v4 as uuidv4 } from "uuid";
 import api from "./api/contacts";
 import ContactDetails from "./components/ContactDetails";
 import DeleteContact from "./components/DeleteContact";
+import EditContact from "./components/EditContact";
 
 export default function App() {
   // const LOCAL_STORAGE_KEY = "contacts";
@@ -25,11 +26,25 @@ export default function App() {
     return response.data;
   };
 
-  const addContactHandler = (contact) => {
-    setContacts((prev) => [...prev, { ...contact, id: uuidv4() }]);
+  const addContactHandler = async(contact) => {
+    const request={ ...contact, id: uuidv4() }
+    const response= await api.post("/contacts",request)
+    setContacts((prev) => [...prev, response]);
   };
 
-  const removeContactHandler = (id) => {
+  const updateContactHandler=async(contact)=>{
+    const response=await api.put(`/contacts/${contact.id}`,contact);
+    console.log("f",response);
+    const {id,name,email}=response.data;
+    setContacts(contacts.map((contact)=>{
+      return contact.id === id ? {...response.data} : contact
+      
+    }))
+    
+  }
+
+  const removeContactHandler = async(id) => {
+    await api.delete(`/contacts/${id}`)
     setContacts((prev) => prev.filter((contact) => contact.id !== id));
   };
 
@@ -71,6 +86,12 @@ export default function App() {
             path="/delete"
             element={
               <DeleteContact removeContactHandler={removeContactHandler} />
+            }
+          />
+          <Route
+            path="/edit"
+            element={
+              <EditContact updateContactHandler={updateContactHandler} />
             }
           />
         </Routes>

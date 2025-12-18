@@ -17,3 +17,7 @@
   justify-content: center;
   margin-top: 20px;
 }
+.icons{
+  display: flex;
+  gap: 10px;
+}

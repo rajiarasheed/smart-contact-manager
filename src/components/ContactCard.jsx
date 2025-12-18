@@ -19,9 +19,15 @@ export default function ContactCard({contacts,clickHandler}){
                     </Link>
                 </div>
                 </div>
-                <Link to='/delete' state={{id}}>
-                <i className="trash alternate outline icon right floated" ></i>
+                <div className="icons">
+                
+                <Link to='/edit' state={{id,name,email}}>
+                <i className="edit alternate outline icon blue" ></i>
                 </Link>
+                <Link to='/delete' state={{id}}>
+                <i className="trash alternate outline icon right floated red" style={{marginLeft:"8px"}}></i>
+                </Link>
+                </div>
             </div>
     )
 }
