@@ -12,6 +12,8 @@ class AddContact extends React.Component {
     }
     this.props.addContactHandler(this.state)
     this.setState({name:"", email:""})
+    // 🔹 Redirect to homepage (simple way)
+  window.location.href = "/";
     
   }
   render() {
