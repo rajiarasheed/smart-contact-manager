@@ -2,7 +2,7 @@ import { Link, useLocation } from "react-router-dom";
 export default function DeleteContact({removeContactHandler }) {
     const location=useLocation();
     const {id}=location.state;
-    console.log(id);
+    // console.log(id);
     
   return (
     <div className="main" style={{ marginTop: "80px" }}>

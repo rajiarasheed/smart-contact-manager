@@ -2,7 +2,7 @@ import ContactCard from "./ContactCard";
 import { Link } from "react-router-dom";
 
 export default function ContactList({ contacts, getContactId }) {
-  console.log(getContactId);
+  // console.log(getContactId);
  
   const renderedContactList = contacts.map((contact) => {
     return (
@@ -15,7 +15,7 @@ export default function ContactList({ contacts, getContactId }) {
       
     );
   });
-  console.log(renderedContactList);
+  // console.log(renderedContactList);
 
   return (
     <div className="ui celled list" style={{ marginTop: "80px" }}>

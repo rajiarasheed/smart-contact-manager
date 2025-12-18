@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 export default function ContactCard({contacts,clickHandler}){
 
     const {id,name,email}=contacts
-    console.log("hi",clickHandler);
+    // console.log("hi",clickHandler);
      if (!contacts) {
     return <h3>No contacts found</h3>;
   }
